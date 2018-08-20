@@ -1,1 +1,1 @@
-# ride-my-way=client
+# ride-my-way-client
