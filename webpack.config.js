@@ -8,6 +8,15 @@ module.exports = {
   output: {
     filename: 'bundle.js'
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }
+    ]
+  },
   devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'public')
