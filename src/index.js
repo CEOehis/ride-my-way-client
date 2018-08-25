@@ -1,4 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
-render(<div>Hello, Setup</div>, document.getElementById('app'));
+import configureStore from './store/configureStore';
+
+const store = configureStore();
+
+const Main = () => (
+  <Provider store={store}>
+    <div>Hello, Setup</div>
+  </Provider>
+);
+
+render(<Main />, document.getElementById('app'));
