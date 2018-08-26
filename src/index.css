@@ -1,0 +1,736 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:700');
+
+html, body, #app {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/* resets */
+html, body {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* p, ul, ol {
+  margin: 0;
+  padding: 0;
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* end resets */
+
+.app-grid {
+  display: grid;
+  grid-column-gap: 20px;
+  padding: 10px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.layout-grid {
+  grid-column: span 10/12;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.brand {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 700;
+  margin: 0;
+  color: orange;
+  font-size: 40px;
+}
+
+.brand a {
+  color: inherit;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 10px;
+  margin-left: 10px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  padding: 15px 15px;
+}
+
+.nav-links a:hover {
+  color: orange;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero h1 {
+  color: orange;
+}
+
+.hero p {
+  max-width: 600px;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 50px;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: 6px 20px;
+  line-height: 1.5;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.btn-lg {
+  font-size: 24px;
+}
+
+.btn-orange {
+  color: orange;
+  background-color: transparent;
+  background-image: none;
+  border-color: orange;
+}
+
+.btn-orange:hover {
+  color: white;
+  border-color: white;
+  background-color: orange;
+}
+
+.btn-orange-inverse {
+  color: white;
+  background-color: orange;
+  background-image: none;
+  border-color: white;
+}
+
+.btn-orange-inverse:hover {
+  /* background-color: rgb(238, 156, 5); */
+  background-color: black;
+  border-color: orange;
+  color: orange;
+}
+
+.black-bg {
+  background: black;
+  color: white;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.how {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.how h1 {
+  text-align: center;
+  color: orange;
+}
+
+.how h2 {
+  text-align: center;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.card {
+  border: 1px solid orange;
+  border-radius: 5px;
+  margin: 15px;
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 15px;
+  transition: all 1.2s;
+}
+
+.card:hover {
+  box-shadow: 0px 2px 20px orange;
+}
+
+.card p {
+  line-height: 25px;
+}
+
+.card hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid orange;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.orange-bg {
+  background: orange;
+}
+
+.site-content {
+  flex: 1;
+}
+
+/* signup page */
+.form-group input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid;
+  transition: all .5s;
+}
+
+.form-group input:focus {
+  border-color: orange;
+  outline: none;
+}
+
+.btn-submit {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.submitting,
+.submitting:hover,
+.btn-submit.submitting,
+.btn-submit.submitting:hover {
+  background-color: #ccc;
+  color: white;
+  cursor: not-allowed;
+}
+
+.p-100 {
+  padding-bottom: 100px;
+}
+
+.report {
+  width: 100%;
+  /* padding: 12px 20px; */
+  box-sizing: border-box;
+  transition: all .5s;
+}
+
+.report p {
+  margin: 2px 0 0;
+  width: 100%;
+}
+
+.report.error {
+  background: rgb(248, 155, 155);
+}
+
+.member-status {
+  margin-top: 10px;
+  display: block;
+}
+
+.member-status a {
+  color: orange;
+}
+
+/* ride offers page */
+.instructions {
+  padding-bottom: 50px;
+}
+
+.instructions p {
+  font-size: 20px;
+}
+
+.ride-results, .ride-offer {
+  padding-bottom: 100px;
+}
+
+.available-ride {
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgb(153, 153, 153);
+  margin-bottom: 30px;
+}
+
+.path {
+  background: orange;
+  padding: 10px 15px;
+}
+
+.path span {
+  color: white;
+  margin: 0 5px;
+}
+
+.path h4 {
+  margin: 0;
+}
+
+.ride-summary {
+  display: grid;
+  grid-column-gap: 20px;
+  padding: 10px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.profile {
+  grid-column: span 4/5;
+  display: flex;
+  align-items: start;
+}
+
+.profile img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.driver i {
+  font-weight: normal;
+}
+
+.ride-info {
+  grid-column: span 4/9;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seats {
+  /* font-weight: bold; */
+  font-size: 25px;
+  line-height: 1;
+}
+
+.actions {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-around;
+}
+
+/* ride-details */
+.ride-details {
+  display: grid;
+  grid-column-gap: 20px;
+  padding: 10px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  padding-bottom: 100px;
+}
+
+.trip {
+  grid-column: span 8;
+  background: rgb(243, 243, 243);
+  padding: 15px 40px 50px;
+}
+
+.trip td {
+  padding: 5px 15px 5px 0;
+}
+
+.trip tr>td:first-child {
+  font-weight: bold;
+}
+
+.driver-profile {
+  grid-column: span 4;
+}
+
+.driver-name {
+  font-weight: normal;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.checked {
+  color: orange;
+}
+
+.call-to-action {
+  margin-top: 50px;
+}
+
+/* request success */
+.success-message {
+  display: flex;
+  align-items: center;
+}
+
+.success-message .fa {
+  color: green;
+}
+
+.success-message p {
+  margin-left: 10px;
+  max-width: 60%;
+  line-height: 25px;
+}
+
+/* offer a ride */
+.ride-offer {
+  grid-column: span 6/10;
+}
+
+.ride-offer h3 {
+  color: rgb(173, 170, 170);
+}
+
+.ride-offer .btn-submit {
+  min-width: 150px;
+  width: 40%;
+}
+
+.upcoming-trips {
+  width: 100%;
+  padding-bottom: 100px;
+}
+
+.upcoming-trips table {
+  width: 100%;
+}
+
+.ride-requests {
+  margin-bottom: 100px;
+}
+
+.ride-requests h2 {
+  color: rgb(173, 170, 170);
+}
+
+.request-summary {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(153, 153, 153);
+  margin-bottom: 15px;
+}
+
+.request-summary .actions {
+  align-self: center;
+  display: block;
+}
+
+.user-profile, .user-profile-summary {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile {
+  justify-content: space-between;
+}
+
+.user-profile-info {
+  padding-left: 15px;
+}
+
+.tab {
+  overflow: hidden;
+  border: none;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  margin: 0 2px;
+  border-radius: 5px 5px 0 0;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.tab-content {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.ride-history {
+  padding-bottom: 100px;
+}
+
+.tab-content table {
+  width: 100%;
+  padding: 10px 5px 30px;
+  border-spacing: 0;
+  text-align: left
+}
+
+.tab-content td, th {
+  padding: 15px;
+}
+
+.tab-content table th {
+  background-color: #333;
+  color: white;
+}
+
+.tab-content table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.menu, .nav-links .brand {
+  display: none;
+}
+
+.menu.btn {
+  color: white;
+  background-color: black;
+}
+
+.splash {
+  min-height: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(255, 255, 255, 0.3)), url(https://source.unsplash.com/kARZuSYMfrA/1600x700);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 100px;
+}
+
+.splash p {
+  color: white;
+}
+
+.dropdown>a {
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding-left: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-content a {
+  display: block;
+  color: black;
+}
+
+.search {
+  display: flex;
+  padding: 0 5px;
+}
+
+.search .form-group {
+  flex: 1;
+  padding: 0 5px;
+}
+
+.search .btn-submit {
+  width: unset;
+}
+
+.search label {
+  position: absolute;
+  height: 1px;
+  clip: rect(0 0 0 0);
+}
+
+.search input {
+  margin: 0;
+}
+
+.not-found {
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.not-found a {
+  color: orange;
+  font-size: 28px;
+}
+
+.not-found a:hover {
+  text-decoration: underline;
+}
+
+/* media queries */
+@media only screen and (max-width: 800px) {
+  .layout-grid {
+    grid-column: span 12;
+  }
+
+  .trip {
+    grid-column: span 12;
+  }
+
+  .driver-profile {
+    grid-column: span 12;
+  }
+
+  .steps {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .nav-links {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: black;
+    height: 100%;
+    padding-left: 0;
+    margin-top: 0;
+    width: 250px;
+    color: white;
+    transform: translate(-550px, 0);
+    transition: transform .3s ease;
+  }
+
+  .expanded {
+    transform: translate(0, 0);
+  }
+
+  .nav-links a {
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    display: block;
+  }
+
+  .nav-links .brand {
+    font-size: 40px;
+    color: orange;
+  }
+
+  .menu, .nav-links .brand {
+    display: block;
+  }
+
+  .profile, .ride-info {
+    grid-column: span 6;
+  }
+
+  .actions {
+    grid-column: span 12;
+    margin-top: 15px;
+  }
+
+  .dropdown-content {
+    background-color: inherit;
+    position: initial;
+  }
+
+  .dropdown-content li {
+    margin-left: 0;
+  }
+
+  .search {
+    display: block;
+  }
+
+  .search input {
+    margin: 8px 0;
+  }
+
+  .search .btn-submit {
+    width: 100%;
+  }
+
+}
+
+@media only screen and (max-width: 450px) {
+  /* .profile, .ride-info, .actions {
+    grid-column: span 12;
+  } */
+  .ride-summary .profile img {
+    display: none;
+  }
+  .seats {
+    font-size: 20px;
+  }
+
+  .trip {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .call-to-action {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .call-to-action a {
+    margin-bottom: 5px;
+  }
+
+  .hero {
+    align-items: unset;
+  }
+
+  .navbar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .user-profile {
+    display: block;
+  }
+}
