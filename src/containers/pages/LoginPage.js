@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 
 import Navbar from '../../components/Navbar';
@@ -87,11 +87,9 @@ class LoginPage extends React.Component {
   }
 }
 
-const SubmitInput = ({ signingIn }) => {
-  return signingIn ?
-    <input className="btn btn-lg btn-submit btn-orange submitting" type="submit" value="Signing in" disabled /> :
-    <input className="btn btn-lg btn-submit btn-orange" type="submit" value="submit" />;
-};
+const SubmitInput = ({ signingIn }) => (signingIn
+  ? <input className="btn btn-lg btn-submit btn-orange submitting" type="submit" value="Signing in" disabled />
+  : <input className="btn btn-lg btn-submit btn-orange" type="submit" value="submit" />);
 
 LoginPage.propTypes = {
   signingIn: PropTypes.bool.isRequired,
@@ -103,13 +101,11 @@ SubmitInput.propTypes = {
   signingIn: PropTypes.bool.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleSignIn(email, password) {
-      dispatch(signIn(email, password));
-    },
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  handleSignIn(email, password) {
+    dispatch(signIn(email, password));
+  },
+});
 
 const mapStateToProps = ({ users }) => {
   const { token, user, signingIn, error } = users; // eslint-disable-line
