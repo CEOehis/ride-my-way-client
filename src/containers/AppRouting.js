@@ -6,12 +6,16 @@ import {
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import Footer from '../components/Footer';
+import ProtectedRoute from './ProtectedRoute';
+
+const AppPage = () => <div>The AppPage</div>;
 
 const AppRouting = () => (
   <Router>
     <Fragment>
       <Route exact path="/" component={LandingPage} />
       <Route path="/login" component={LoginPage} />
+      <ProtectedRoute path="/home" component={AppPage} />
       <Footer />
     </Fragment>
   </Router>
