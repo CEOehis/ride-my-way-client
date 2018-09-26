@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form submit button component should render correctly 1`] = `
+<input
+  className="btn btn-lg btn-submit btn-orange submitting"
+  disabled={true}
+  type="submit"
+  value="submitting"
+/>
+`;

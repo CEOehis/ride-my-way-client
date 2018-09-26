@@ -7,6 +7,7 @@ import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import Footer from '../components/Footer';
 import ProtectedRoute from './ProtectedRoute';
+import SignUpPage from './pages/SignUpPage';
 
 const AppPage = () => <div>The AppPage</div>;
 
@@ -15,6 +16,7 @@ const AppRouting = () => (
     <Fragment>
       <Route exact path="/" component={LandingPage} />
       <Route path="/login" component={LoginPage} />
+      <Route path="/register" component={SignUpPage} />
       <ProtectedRoute path="/home" component={AppPage} />
       <Footer />
     </Fragment>
