@@ -6,9 +6,23 @@ import {
 
 const __API__ = 'http://localhost:3000'; // eslint-disable-line no-underscore-dangle
 
+const signInRequest = () => ({
+  type: SIGNING_USER_IN,
+});
+
+const signInSuccess = body => ({
+  type: USER_SIGN_IN_SUCCESS,
+  payload: body,
+});
+
+const signInFailure = error => ({
+  type: USER_SIGN_IN_ERROR,
+  payload: error,
+});
+
 const signIn = (email, password) => (dispatch) => {
-  dispatch({ type: SIGNING_USER_IN });
-  fetch(`${__API__}/api/v1/users/login`, {
+  dispatch(signInRequest());
+  return fetch(`${__API__}/api/v1/users/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,14 +36,13 @@ const signIn = (email, password) => (dispatch) => {
     .then((response) => {
       if (response.status === 'success') {
         localStorage.setItem('token', response.token);
-        return dispatch({ type: USER_SIGN_IN_SUCCESS, payload: response });
+        return dispatch(signInSuccess(response));
       }
-      return dispatch({ type: USER_SIGN_IN_ERROR, payload: response });
+      return dispatch(signInFailure(response));
     })
     .catch((error) => {
-      dispatch({ type: USER_SIGN_IN_ERROR, payload: error });
+      dispatch(signInFailure(error));
     });
 };
-
 
 export default signIn;
