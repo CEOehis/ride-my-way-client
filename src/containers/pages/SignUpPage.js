@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Navbar from '../../components/Navbar';
 import FormSubmitButton from '../../components/FormSubmitButton';
+import signUp, { clearError } from '../../actions/signUp';
 
 class SignUpPage extends Component {
   constructor(props) {
@@ -14,12 +18,32 @@ class SignUpPage extends Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeErrorReport = this.removeErrorReport.bind(this);
   }
 
   handleInputChange(event) {
     this.setState({
       [event.target.id]: event.target.value,
     });
+  }
+
+  handleSubmit(event) {
+    const { handleSignUp } = this.props;
+    const {
+      fullName,
+      email,
+      password,
+      password2,
+    } = this.state;
+    handleSignUp(fullName, email, password, password2);
+    event.preventDefault();
+  }
+
+  removeErrorReport() {
+    const { error, clearFormError } = this.props;
+    if (!error) return;
+    clearFormError();
   }
 
   render() {
@@ -29,7 +53,10 @@ class SignUpPage extends Component {
       password,
       password2,
     } = this.state;
-
+    const { token, signingIn, error } = this.props;
+    if (token) {
+      return <Redirect to="/home" />;
+    }
     return (
       <Fragment>
         <header className="app-grid">
@@ -38,7 +65,11 @@ class SignUpPage extends Component {
         <main className="app-grid site-content">
           <div className="layout-grid hero p-100">
             <h1>Register to get started</h1>
-            <form id="register">
+            <form
+              onKeyDown={this.removeErrorReport}
+              onSubmit={this.handleSubmit}
+              id="register"
+            >
               <div className="form-group">
                 <label htmlFor="name">
                   Full Name
@@ -90,9 +121,9 @@ class SignUpPage extends Component {
                     required
                   />
                 </label>
-                <div className="report" />
+                <div className="report error">{error}</div>
               </div>
-              <FormSubmitButton submitting={false} />
+              <FormSubmitButton submitting={signingIn} />
               <span className="member-status">
                 <i>
                   Already a member?
@@ -107,4 +138,27 @@ class SignUpPage extends Component {
   }
 }
 
-export default SignUpPage;
+SignUpPage.propTypes = {
+  handleSignUp: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  signingIn: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
+  clearFormError: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = ({ users }) => {
+  const { token, signingIn, error } = users;
+  return { token, signingIn, error };
+};
+
+const mapDispatchToProps = dispatch => ({
+  handleSignUp(fullName, email, password, password2) {
+    dispatch(signUp(fullName, email, password, password2));
+  },
+
+  clearFormError() {
+    dispatch(clearError());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage);

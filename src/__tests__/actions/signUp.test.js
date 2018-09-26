@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
-import signUp from '../../actions/signUp';
+import signUp, { clearError } from '../../actions/signUp';
 import * as types from '../../actions/action.types';
 
 
@@ -12,6 +12,12 @@ describe('sign up actions', () => {
   afterEach(() => {
     fetchMock.reset();
     fetchMock.restore();
+  });
+
+  it('clearError action should call CLEAR_FORM_ERROR', () => {
+    const store = mockStore({});
+    store.dispatch(clearError());
+    expect(store.getActions()).toEqual([{type: types.CLEAR_FORM_ERROR }]);
   });
 
   it('calls USER_SIGN_UP_SUCCESS when user sign is has been done', () => {

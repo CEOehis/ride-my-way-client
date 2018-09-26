@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import Navbar from '../../components/Navbar';
 import signIn from '../../actions/signIn';
+import FormSubmitButton from '../../components/FormSubmitButton';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -72,7 +73,7 @@ class LoginPage extends React.Component {
                 />
                 <div className="report" />
               </div>
-              <SubmitInput signingIn={signingIn} />
+              <FormSubmitButton submitting={signingIn} />
               <span className="member-status">
                 <i>
                   Not a member?
@@ -87,18 +88,10 @@ class LoginPage extends React.Component {
   }
 }
 
-const SubmitInput = ({ signingIn }) => (signingIn
-  ? <input className="btn btn-lg btn-submit btn-orange submitting" type="submit" value="Signing in" disabled />
-  : <input className="btn btn-lg btn-submit btn-orange" type="submit" value="submit" />);
-
 LoginPage.propTypes = {
   signingIn: PropTypes.bool.isRequired,
   handleSignIn: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
-};
-
-SubmitInput.propTypes = {
-  signingIn: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({

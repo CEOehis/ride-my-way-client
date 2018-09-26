@@ -10,6 +10,7 @@
     	"required": {
     		"some": ["id"]
     	}
-		}]
+		}],
+		"jsx-a11y/no-noninteractive-element-interactions": 0
 	}
 }

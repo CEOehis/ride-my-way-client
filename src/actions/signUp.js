@@ -2,6 +2,7 @@ import {
   SIGNING_USER_UP,
   USER_SIGN_UP_SUCCESS,
   USER_SIGN_UP_ERROR,
+  CLEAR_FORM_ERROR,
 } from './action.types';
 
 const __API__ = 'http://localhost:3000'; // eslint-disable-line no-underscore-dangle
@@ -18,6 +19,10 @@ const signUpSuccess = body => ({
 const signUpFailure = error => ({
   type: USER_SIGN_UP_ERROR,
   payload: error,
+});
+
+export const clearError = () => ({
+  type: CLEAR_FORM_ERROR,
 });
 
 const signUp = (fullName, email, password, passwordConfirm) => (dispatch) => {
