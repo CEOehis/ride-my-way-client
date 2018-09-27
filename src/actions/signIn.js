@@ -4,8 +4,6 @@ import {
   USER_SIGN_IN_ERROR,
 } from './action.types';
 
-const __API__ = 'http://localhost:3000'; // eslint-disable-line no-underscore-dangle
-
 const signInRequest = () => ({
   type: SIGNING_USER_IN,
 });
@@ -36,6 +34,7 @@ const signIn = (email, password) => (dispatch) => {
     .then((response) => {
       if (response.status === 'success') {
         localStorage.setItem('token', response.token);
+        localStorage.setItem('user', JSON.stringify(response.user));
         return dispatch(signInSuccess(response));
       }
       return dispatch(signInFailure(response));

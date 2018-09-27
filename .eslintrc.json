@@ -12,5 +12,8 @@
     	}
 		}],
 		"jsx-a11y/no-noninteractive-element-interactions": 0
+	},
+	"globals": {
+		"__API__": true
 	}
 }

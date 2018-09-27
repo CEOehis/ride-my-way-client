@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode=development --config webpack.config.js --open",
+    "start": "webpack-dev-server --progress --mode=development --config webpack.config.js --open",
     "lint": "eslint ./src --fix",
     "test": "jest --coverage",
     "test:watch": "npm test -- --watch"

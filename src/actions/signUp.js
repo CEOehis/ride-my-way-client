@@ -5,8 +5,6 @@ import {
   CLEAR_FORM_ERROR,
 } from './action.types';
 
-const __API__ = 'http://localhost:3000'; // eslint-disable-line no-underscore-dangle
-
 const signUpRequest = () => ({
   type: SIGNING_USER_UP,
 });
