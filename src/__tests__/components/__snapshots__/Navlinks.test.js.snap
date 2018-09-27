@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form submit Navlinks component should display links for logged in user 1`] = `
+<Fragment>
+  <li>
+    <Link
+      className="brand"
+      replace={false}
+      to="/"
+    >
+      RideMyWay
+    </Link>
+  </li>
+  <li>
+    <Link
+      replace={false}
+      to="/create"
+    >
+      Offer a Ride
+    </Link>
+  </li>
+  <li>
+    <Link
+      replace={false}
+      to="/home"
+    >
+      View Rides
+    </Link>
+  </li>
+  <li
+    className="dropdown"
+  >
+    <a>
+      Hi,
+       user
+      <i
+        className="fa fa-chevron-down"
+      />
+    </a>
+    <ul
+      className="dropdown-content"
+    >
+      <li>
+        <Link
+          replace={false}
+          to="/profile"
+        >
+          Profile
+        </Link>
+      </li>
+      <li>
+        <Link
+          replace={false}
+          to="/user/rides"
+        >
+          My Ride Offers
+        </Link>
+      </li>
+      <li>
+        <Link
+          replace={false}
+          to="/logout"
+        >
+          Sign out
+        </Link>
+      </li>
+    </ul>
+  </li>
+</Fragment>
+`;
+
+exports[`Form submit Navlinks component should display links login/register links 1`] = `
+<Fragment>
+  <li>
+    <Link
+      className="brand"
+      replace={false}
+      to="/"
+    >
+      RideMyWay
+    </Link>
+  </li>
+  <li>
+    <Link
+      replace={false}
+      to="/register"
+    >
+      Register
+    </Link>
+  </li>
+  <li>
+    <Link
+      replace={false}
+      to="/login"
+    >
+      Login
+    </Link>
+  </li>
+</Fragment>
+`;

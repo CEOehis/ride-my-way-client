@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Navlinks from './Navlinks';
+import signOut from '../actions/signOut';
 
-class Navbar extends React.Component {
+export class Navbar extends React.Component {
   constructor() {
     super();
 
@@ -10,6 +14,7 @@ class Navbar extends React.Component {
     };
 
     this.toggleMenu = this.toggleMenu.bind(this);
+    this.handleSignOut = this.handleSignOut.bind(this);
   }
 
   toggleMenu() {
@@ -19,8 +24,14 @@ class Navbar extends React.Component {
     });
   }
 
+  handleSignOut() {
+    const { logOut } = this.props;
+    logOut();
+  }
+
   render() {
     const { mobileNavVisible } = this.state;
+    const user = JSON.parse(localStorage.getItem('user'));
     return (
       <nav className="layout-grid navbar">
         <h1 className="brand"><Link to="/">RideMyWay</Link></h1>
@@ -28,19 +39,21 @@ class Navbar extends React.Component {
           <i className="fa fa-navicon" aria-hidden="true" />
         </button>
         <ul className={mobileNavVisible ? 'nav-links expanded' : 'nav-links'}>
-          <li>
-            <Link to="/" className="brand">RideMyWay</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          <Navlinks user={user} signOut={this.handleSignOut} />
         </ul>
       </nav>
     );
   }
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  logOut: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  logOut() {
+    dispatch(signOut());
+  },
+});
+
+export default connect(null, mapDispatchToProps)(Navbar);
