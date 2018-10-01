@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form submit FetchingSpinner component should render correctly 1`] = `
+<i
+  aria-hidden="true"
+  className="fa fa-spinner fa-spin fa-pulse fa-5x"
+  style={
+    Object {
+      "display": "block",
+      "textAlign": "center",
+    }
+  }
+/>
+`;

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form submit RideOffer component should render correctly 1`] = `
+<div
+  className="available-ride"
+>
+  <div
+    className="path"
+  >
+    <h4>
+      Reichelchester
+      <span>
+        &gt;&gt;
+      </span>
+      Port Liliane
+    </h4>
+  </div>
+  <div
+    className="ride-summary"
+  >
+    <div
+      className="profile"
+    >
+      <img
+        alt="driver"
+        src="https://placehold.it/100/100"
+      />
+      <div
+        className="driver"
+      >
+        <h4>
+          Celestine Ekoh-Ordan
+        </h4>
+        <p>
+          Oct 01, 2018
+          ,
+          12:30 AM
+        </p>
+      </div>
+    </div>
+    <div
+      className="ride-info"
+    >
+      <p
+        className="seats"
+      >
+        Available seats:
+        2
+      </p>
+    </div>
+    <div
+      className="actions"
+    >
+      <a
+        className="btn btn-orange btn-lg"
+        href="/ride/1"
+      >
+        Details
+      </a>
+    </div>
+  </div>
+</div>
+`;

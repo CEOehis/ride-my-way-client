@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form submit Search component should render correctly 1`] = `
+<div
+  className="instructions"
+>
+  <h2>
+    Available Ride Offers
+    <i
+      className="fa fa-search "
+    />
+  </h2>
+  <form
+    className="search"
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="origin"
+      >
+        Origin
+      </label>
+      <input
+        id="origin"
+        placeholder="Where from"
+        required={true}
+        type="text"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="destination"
+      >
+        Destination
+      </label>
+      <input
+        id="destination"
+        placeholder="Where to"
+        required={true}
+        type="text"
+      />
+    </div>
+    <input
+      className="btn btn-submit btn-orange"
+      type="submit"
+      value="submit"
+    />
+  </form>
+  <p>
+    Find and select your route, then sit back and relax: we will take care of the rest!
+  </p>
+</div>
+`;
