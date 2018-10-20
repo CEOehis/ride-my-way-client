@@ -15,7 +15,7 @@ exports[`Form submit button component should render correctly 1`] = `
     component={[Function]}
     path="/register"
   />
-  <ProtectedRoute
+  <Connect(ProtectedRoute)
     component={[Function]}
     path="/home"
   />

@@ -1,6 +1,8 @@
+import userIsLoggedIn from '../utils/userIsLoggedIn';
+
 const initialState = {
   auth: {
-    isAuthenticated: false,
+    isAuthenticated: userIsLoggedIn(),
     user: {},
   },
   users: {

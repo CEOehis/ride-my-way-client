@@ -31,7 +31,7 @@ export class Navbar extends React.Component {
 
   render() {
     const { mobileNavVisible } = this.state;
-    const user = JSON.parse(localStorage.getItem('user'));
+    const { user, isAuthenticated } = this.props;
     return (
       <nav className="layout-grid navbar">
         <h1 className="brand"><Link to="/">RideMyWay</Link></h1>
@@ -39,7 +39,7 @@ export class Navbar extends React.Component {
           <i className="fa fa-navicon" aria-hidden="true" />
         </button>
         <ul className={mobileNavVisible ? 'nav-links expanded' : 'nav-links'}>
-          <Navlinks user={user} signOut={this.handleSignOut} />
+          <Navlinks isAuthenticated={isAuthenticated} user={user} signOut={this.handleSignOut} />
         </ul>
       </nav>
     );
@@ -48,7 +48,14 @@ export class Navbar extends React.Component {
 
 Navbar.propTypes = {
   logOut: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
+
+const mapStateToProps = ({ auth }) => ({
+  user: auth.user,
+  isAuthenticated: auth.isAuthenticated,
+});
 
 const mapDispatchToProps = dispatch => ({
   logOut() {
@@ -56,4 +63,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

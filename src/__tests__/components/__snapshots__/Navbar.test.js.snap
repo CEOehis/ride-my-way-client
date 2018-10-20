@@ -29,7 +29,6 @@ exports[`Form submit button component should render correctly 1`] = `
   >
     <Navlinks
       signOut={[Function]}
-      user={null}
     />
   </ul>
 </nav>

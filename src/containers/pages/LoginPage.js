@@ -38,8 +38,9 @@ class LoginPage extends React.Component {
     const { email, password } = this.state;
     const { signingIn } = this.props;
     const { isAuthenticated } = this.props;
+    const { from } = this.props.location.state || { from: { pathname: '/home'}}; // eslint-disable-line
     if (isAuthenticated) {
-      return <Redirect to="/home" />;
+      return <Redirect to={from} />;
     }
     return (
       <Fragment>

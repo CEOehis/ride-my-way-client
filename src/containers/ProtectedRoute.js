@@ -1,14 +1,13 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import userIsLoggedIn from '../utils/userIsLoggedIn';
-
-const ProtectedRoute = ({ component: Component, ...rest }) => (
+const ProtectedRoute = ({ component: Component, isAuthenticated, ...rest }) => (
 
   <Route
     {...rest}
     render={props => (
-      userIsLoggedIn()
+      isAuthenticated
         ? <Component {...props} />
         : (
           <Redirect to={{
@@ -21,4 +20,11 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-export default ProtectedRoute;
+const mapStateToProps = ({ auth }) => {
+  const { isAuthenticated } = auth;
+  return {
+    isAuthenticated,
+  };
+};
+
+export default connect(mapStateToProps, null, null, { pure: false })(ProtectedRoute);
