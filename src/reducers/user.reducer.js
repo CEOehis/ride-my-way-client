@@ -7,15 +7,9 @@ import {
   USER_SIGN_UP_ERROR,
   CLEAR_FORM_ERROR,
 } from '../actions/action.types';
+import initialState from '../store/initialState';
 
-const initialState = {
-  token: '',
-  user: {},
-  signingIn: false,
-  error: '',
-};
-
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = initialState.users, action) => {
   switch (action.type) {
     case SIGNING_USER_IN:
     case SIGNING_USER_UP:

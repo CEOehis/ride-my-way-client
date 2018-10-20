@@ -1,12 +1,7 @@
 import { LOAD_RIDE_OFFERS_REQUEST, LOAD_RIDE_OFFERS_SUCCESS, LOAD_RIDE_OFFERS_ERROR } from '../actions/action.types';
+import initialState from '../store/initialState';
 
-const initialState = {
-  rideOffers: [],
-  loadingRides: false,
-  error: '',
-};
-
-const rideOffersReducer = (state = initialState, action) => {
+const rideOffersReducer = (state = initialState.rides, action) => {
   switch (action.type) {
     case LOAD_RIDE_OFFERS_REQUEST:
       return {
