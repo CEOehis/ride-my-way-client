@@ -11,6 +11,14 @@ import signOut from './actions/signOut';
 
 const store = configureStore();
 
+// wake up heroku backend
+fetch(`${__API__}`)
+  .then((res) => {
+    if (res.ok) {
+      console.log('API server ready'); // eslint-disable-line no-console
+    }
+  });
+
 if (userIsLoggedIn()) {
   store.dispatch(setLoggedInUser());
 } else {

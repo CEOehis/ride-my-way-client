@@ -53,8 +53,8 @@ class SignUpPage extends Component {
       password,
       password2,
     } = this.state;
-    const { token, signingIn, error } = this.props;
-    if (token) {
+    const { isAuthenticated, signingIn, error } = this.props;
+    if (isAuthenticated) {
       return <Redirect to="/home" />;
     }
     return (
@@ -140,15 +140,16 @@ class SignUpPage extends Component {
 
 SignUpPage.propTypes = {
   handleSignUp: PropTypes.func.isRequired,
-  token: PropTypes.string.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
   signingIn: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   clearFormError: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ users }) => {
-  const { token, signingIn, error } = users;
-  return { token, signingIn, error };
+const mapStateToProps = ({ auth, users }) => {
+  const { signingIn, error } = users;
+  const { isAuthenticated } = auth;
+  return { isAuthenticated, signingIn, error };
 };
 
 const mapDispatchToProps = dispatch => ({
