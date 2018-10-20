@@ -16,12 +16,10 @@ describe('sign out actions', () => {
 
   it('clears user data from localStorage', () => {
     localStorage.setItem('token', 'the token');
-    localStorage.setItem('user', { name: 'the user' });
 
     const store = mockStore({});
     store.dispatch(signOut());
 
-    expect(localStorage.getItem('user')).toEqual(null);
     expect(localStorage.getItem('token')).toEqual(null);
   });
 });

@@ -22,8 +22,6 @@ const userReducer = (state = initialState.users, action) => {
       return {
         ...state,
         signingIn: false,
-        user: action.payload.user,
-        token: action.payload.token,
       };
     case USER_SIGN_IN_ERROR:
     case USER_SIGN_UP_ERROR:

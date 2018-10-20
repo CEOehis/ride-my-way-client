@@ -34,7 +34,6 @@ const signIn = (email, password) => (dispatch) => {
     .then((response) => {
       if (response.status === 'success') {
         localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
         return dispatch(signInSuccess(response));
       }
       return dispatch(signInFailure(response));

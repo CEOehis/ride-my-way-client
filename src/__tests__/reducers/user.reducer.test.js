@@ -4,8 +4,6 @@ import * as types from '../../actions/action.types';
 describe('user reducer', () => {
   it('should return initial state', () => {
     expect(users(undefined, {})).toEqual({
-      token: '',
-      user: {},
       signingIn: false,
       error: '',
     });
@@ -23,13 +21,10 @@ describe('user reducer', () => {
       type: types.USER_SIGN_IN_SUCCESS,
       payload: {
         user: 'some user',
-        token: 'some token',
       },
     };
     expect(users({}, action)).toEqual({
       signingIn: false,
-      user: 'some user',
-      token: 'some token',
     });
   });
 
@@ -65,8 +60,6 @@ describe('user reducer', () => {
     };
     expect(users({}, action)).toEqual({
       signingIn: false,
-      user: 'the new user',
-      token: 'the token',
     });
   });
 

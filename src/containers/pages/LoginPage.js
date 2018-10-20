@@ -37,8 +37,8 @@ class LoginPage extends React.Component {
   render() {
     const { email, password } = this.state;
     const { signingIn } = this.props;
-    const { token } = this.props;
-    if (token) {
+    const { isAuthenticated } = this.props;
+    if (isAuthenticated) {
       return <Redirect to="/home" />;
     }
     return (
@@ -91,7 +91,7 @@ class LoginPage extends React.Component {
 LoginPage.propTypes = {
   signingIn: PropTypes.bool.isRequired,
   handleSignIn: PropTypes.func.isRequired,
-  token: PropTypes.string.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -100,9 +100,10 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const mapStateToProps = ({ users }) => {
-  const { token, user, signingIn, error } = users; // eslint-disable-line
-  return { token, user, signingIn, error }; // eslint-disable-line
+const mapStateToProps = ({ users, auth }) => {
+  const { signingIn, error } = users; // eslint-disable-line
+  const { isAuthenticated } = auth;
+  return { isAuthenticated, signingIn, error }; // eslint-disable-line
 };
 
 // export default LoginPage;

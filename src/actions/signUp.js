@@ -41,7 +41,6 @@ const signUp = (fullName, email, password, passwordConfirm) => (dispatch) => {
     .then((response) => {
       if (response.status === 'success') {
         localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
         return dispatch(signUpSuccess(response));
       }
       return dispatch(signUpFailure(response));
