@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import ProtectedRoute from './ProtectedRoute';
 import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
+import RideDetailsPage from './pages/RideDetailsPage';
 
 const AppRouting = () => (
   <Router>
@@ -17,6 +18,7 @@ const AppRouting = () => (
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={SignUpPage} />
       <ProtectedRoute path="/home" component={HomePage} />
+      <ProtectedRoute path="/ride/:rideId" component={RideDetailsPage} />
       <Footer />
     </Fragment>
   </Router>

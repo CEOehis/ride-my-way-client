@@ -232,6 +232,7 @@ a {
   background-color: #ccc;
   color: white;
   cursor: not-allowed;
+  border: none;
 }
 
 .p-100 {

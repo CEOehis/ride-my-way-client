@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form submit RideOffer component should render correctly 1`] = `
+exports[`RideOffer component should render correctly 1`] = `
 <div
   className="available-ride"
 >
@@ -51,12 +51,13 @@ exports[`Form submit RideOffer component should render correctly 1`] = `
     <div
       className="actions"
     >
-      <a
+      <Link
         className="btn btn-orange btn-lg"
-        href="/ride/1"
+        replace={false}
+        to="/ride/1"
       >
         Details
-      </a>
+      </Link>
     </div>
   </div>
 </div>

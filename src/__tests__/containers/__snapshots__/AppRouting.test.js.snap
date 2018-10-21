@@ -19,6 +19,10 @@ exports[`Form submit button component should render correctly 1`] = `
     component={[Function]}
     path="/home"
   />
+  <Connect(ProtectedRoute)
+    component={[Function]}
+    path="/ride/:rideId"
+  />
   <Footer />
 </BrowserRouter>
 `;

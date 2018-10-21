@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import parseTime from '../utils/parseTime';
 
@@ -41,7 +42,7 @@ const RideOffer = ({ ride }) => {
           </p>
         </div>
         <div className="actions">
-          <a href={`/ride/${rideId}`} className="btn btn-orange btn-lg">Details</a>
+          <Link to={`/ride/${rideId}`} className="btn btn-orange btn-lg">Details</Link>
         </div>
       </div>
     </div>
