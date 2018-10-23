@@ -17,7 +17,10 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    const { fetchRideOffers } = this.props;
+    const { fetchRideOffers, rideOffers } = this.props;
+    if (rideOffers.length) {
+      return;
+    }
     fetchRideOffers();
   }
 

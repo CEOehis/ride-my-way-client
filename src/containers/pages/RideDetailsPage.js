@@ -15,9 +15,12 @@ class RideDetailsPage extends Component {
 
   componentDidMount() {
     // obtain rideId from url params
-    const { match, fetchRideDetails } = this.props;
+    const { match, fetchRideDetails, ride } = this.props;
     const { rideId } = match.params;
     // fetch ride details and render
+    if (ride.rideId == rideId) {
+      return;
+    }
     fetchRideDetails(rideId);
   }
 
