@@ -5,6 +5,7 @@ const initialState = {
   requested: false,
   data: {},
   error: '',
+  requesting: false,
 };
 
 const rideDetails = (state = initialState, action) => {
@@ -30,6 +31,11 @@ const rideDetails = (state = initialState, action) => {
       return {
         ...state,
         requested: action.payload,
+      };
+    case types.REQUEST_RIDE_LOADING:
+      return {
+        ...state,
+        requesting: action.payload,
       };
     default:
       return state;

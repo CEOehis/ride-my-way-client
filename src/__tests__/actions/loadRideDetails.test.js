@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 import * as types from '../../actions/action.types';
-import loadRideDetails from '../../actions/loadRideDetails';
+import loadRideDetails, { requestRide } from '../../actions/loadRideDetails';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -101,6 +101,36 @@ describe('load ride offers actions', () => {
     const store = mockStore({});
 
     return store.dispatch(loadRideDetails(1)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
+
+describe('requestRide actions', () => {
+  afterEach(() => {
+    fetchMock.reset();
+    fetchMock.restore();
+  });
+
+  it('should call REQUEST_RIDE_LOADING', () => {
+    fetchMock.post('http://localhost:3000/api/v1/rides/1/requests', {
+      body: {
+        status: 'success',
+        ride: {
+          id: 1,
+        },
+      },
+    });
+
+    const expectedActions = [
+      { type: types.REQUEST_RIDE_LOADING, payload: true },
+      { type: types.REQUEST_RIDE_LOADING, payload: false },
+      { type: types.SET_RIDE_REQUEST_STATUS, payload: true },
+    ];
+
+    const store = mockStore({});
+
+    return store.dispatch(requestRide(1)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

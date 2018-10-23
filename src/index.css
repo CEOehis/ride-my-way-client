@@ -459,6 +459,10 @@ a {
   border: none;
 }
 
+button {
+  outline: none;
+}
+
 .tab button {
   background-color: inherit;
   float: left;

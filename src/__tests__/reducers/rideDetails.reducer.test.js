@@ -8,6 +8,7 @@ describe('ride offer reducer', () => {
       requested: false,
       data: {},
       error: '',
+      requesting: false,
     });
   });
 
@@ -49,6 +50,16 @@ describe('ride offer reducer', () => {
     };
     expect(rideDetails({}, action)).toEqual({
       requested: true,
+    });
+  });
+
+  it('should handle REQUEST_RIDE_LOADING', () => {
+    const action = {
+      type: types.REQUEST_RIDE_LOADING,
+      payload: true,
+    };
+    expect(rideDetails({}, action)).toEqual({
+      requesting: true,
     });
   });
 });

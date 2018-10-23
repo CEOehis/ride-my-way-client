@@ -1,4 +1,5 @@
 import jwtDecode from 'jwt-decode';
+import swal from 'sweetalert';
 import * as types from './action.types';
 
 const loadRideDetailsRequest = () => ({
@@ -19,6 +20,33 @@ const setRideRequestStatus = status => ({
   type: types.SET_RIDE_REQUEST_STATUS,
   payload: status,
 });
+
+const requestRideLoading = isRequesting => ({
+  type: types.REQUEST_RIDE_LOADING,
+  payload: isRequesting,
+});
+
+export const requestRide = rideId => (dispatch) => {
+  dispatch(requestRideLoading(true));
+  const { token } = localStorage;
+  return fetch(`${__API__}/api/v1/rides/${rideId}/requests`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(response => response.json())
+    .then((response) => {
+      if (response.status === 'success') {
+        dispatch(requestRideLoading(false));
+        dispatch(setRideRequestStatus(true));
+        swal('Ride request successful!', '', 'success');
+        return;
+      }
+      dispatch(requestRideLoading(false));
+    })
+    .catch(() => dispatch(requestRideLoading(false)));
+};
 
 const loadRideDetails = rideId => (dispatch) => {
   dispatch(loadRideDetailsRequest());

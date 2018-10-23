@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { Fragment } from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -5,7 +6,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import parseTime from '../utils/parseTime';
 
-const RideDetails = ({ ride, user, requested }) => {
+const RideDetails = ({
+  ride,
+  user,
+  requested,
+  handleRequest,
+  requesting,
+}) => {
   const {
     origin,
     destination,
@@ -68,13 +75,18 @@ const RideDetails = ({ ride, user, requested }) => {
             {user.email !== email
               ? (
                 <button
-                  className={`btn btn-orange btn-lg ${requested ? 'submitting' : ''}`}
+                  className={`btn btn-orange btn-lg ${requesting || requested ? 'submitting' : ''}`}
                   data-ride-id
                   href={rideId}
                   type="button"
                   disabled={requested}
+                  onClick={handleRequest}
                 >
-                  {requested ? 'request pending' : 'Join this Ride'}
+                  {
+                    requesting
+                      ? 'requesting'
+                      : requested ? 'request pending' : 'Join this Ride'
+                  }
                 </button>
               ) : ''
   }
@@ -109,11 +121,14 @@ RideDetails.propTypes = {
   ride: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   requested: PropTypes.bool.isRequired,
+  requesting: PropTypes.bool.isRequired,
+  handleRequest: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ auth, rideDetails }) => ({
   user: auth.user,
   requested: rideDetails.requested,
+  requesting: rideDetails.requesting,
 });
 
 export default connect(mapStateToProps)(RideDetails);
