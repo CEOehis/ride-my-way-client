@@ -4,23 +4,29 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
-import SignUpPage from '../../../containers/pages/SignUpPage';
+import LoginPage from '../../../containers/pages/LoginPage';
 import initialState from '../../../store/initialState';
 
 const state = {
   ...initialState,
 };
 
+const route = {
+  location: {
+    state: 'somepathname',
+  },
+};
+
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const store = mockStore(state);
 
-describe('SignUpPage Component', () => {
-  test('renders the SignUpPage Component', () => {
+describe('LoginPage Component', () => {
+  test('renders the LoginPage Component', () => {
     const wrapper = mount(
       <Provider store={store}>
         <Router>
-          <SignUpPage />
+          <LoginPage location={route.location} />
         </Router>
       </Provider>,
     );

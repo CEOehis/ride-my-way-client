@@ -14,6 +14,11 @@ const initialState = {
     loadingRides: false,
     error: '',
   },
+  offerRide: {
+    loading: false,
+    error: {},
+    data: {},
+  },
 };
 
 export default initialState;
