@@ -11,6 +11,7 @@ import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
 import RideDetailsPage from './pages/RideDetailsPage';
 import OfferRidePage from './pages/OfferRidePage';
+import MyRideOffersPage from './pages/MyRideOffersPage';
 
 const AppRouting = () => (
   <Router>
@@ -21,6 +22,7 @@ const AppRouting = () => (
       <ProtectedRoute path="/home" component={HomePage} />
       <ProtectedRoute path="/ride/:rideId" component={RideDetailsPage} />
       <ProtectedRoute path="/create" component={OfferRidePage} />
+      <ProtectedRoute exact path="/user/rides" component={MyRideOffersPage} />
       <Footer />
     </Fragment>
   </Router>

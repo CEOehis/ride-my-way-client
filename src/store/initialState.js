@@ -19,6 +19,11 @@ const initialState = {
     error: {},
     data: {},
   },
+  myRides: {
+    loading: false,
+    error: '',
+    data: [],
+  },
 };
 
 export default initialState;
