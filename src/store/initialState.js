@@ -24,6 +24,18 @@ const initialState = {
     error: '',
     data: [],
   },
+  requests: {
+    loading: false,
+    error: '',
+    rideInfo: {
+      data: {},
+      error: '',
+    },
+    requestInfo: {
+      data: [],
+      error: '',
+    },
+  },
 };
 
 export default initialState;

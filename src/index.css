@@ -461,6 +461,7 @@ a {
 
 button {
   outline: none;
+  font-size: inherit;
 }
 
 .tab button {

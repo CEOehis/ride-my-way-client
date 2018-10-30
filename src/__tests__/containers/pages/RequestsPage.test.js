@@ -3,12 +3,19 @@ import { mount } from 'enzyme';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { fetch } from 'whatwg-fetch';
 import configureMockStore from 'redux-mock-store';
 import RequestsPage from '../../../containers/pages/RequestsPage';
 import initialState from '../../../store/initialState';
 
 const state = {
   ...initialState,
+};
+
+const match = {
+  params: {
+    rideId: '1',
+  },
 };
 
 const middlewares = [thunk];
@@ -20,7 +27,7 @@ describe('RequestsPage Component', () => {
     const wrapper = mount(
       <Provider store={store}>
         <Router>
-          <RequestsPage />
+          <RequestsPage match={match} />
         </Router>
       </Provider>,
     );

@@ -5,6 +5,7 @@ import auth from './auth.reducer';
 import rideDetails from './rideDetails.reducer';
 import offerRide from './offerRide.reducer';
 import myRides from './myRides.reducer';
+import requests from './requests.reducer';
 
 const rootReducer = combineReducers({
   auth,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   rideDetails,
   offerRide,
   myRides,
+  requests,
 });
 
 export default rootReducer;
