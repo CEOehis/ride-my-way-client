@@ -75,4 +75,42 @@ const loadRequests = rideId => (dispatch) => {
     });
 };
 
+const requestResponseLoading = isLoading => ({
+  type: types.REQUEST_RESPONSE_LOADING,
+  payload: isLoading,
+});
+
+const requestResponseSuccess = (requestId, status) => ({
+  type: types.REQUEST_RESPONSE_SUCCESS,
+  payload: {
+    requestId,
+    status,
+  },
+});
+
+export const requestResponse = (rideId, requestId, status) => (dispatch) => {
+  dispatch(requestResponseLoading(true));
+  const { token } = localStorage;
+  return fetch(`${__API__}/api/v1/rides/${rideId}/requests/${requestId}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      status,
+    }),
+  })
+    .then(response => response.json())
+    .then((response) => {
+      console.log(response);
+      dispatch(requestResponseLoading(false));
+      dispatch(requestResponseSuccess(requestId, status));
+      return response;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
 export default loadRequests;

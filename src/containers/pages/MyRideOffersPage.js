@@ -38,10 +38,7 @@ class MyRideOffersPage extends Component {
                   {
                     loading
                       ? <i style={{ textAlign: 'center', display: 'block' }} className="fa fa-spinner fa-spin fa-pulse fa-5x" aria-hidden="true" />
-                      : null
-                  }
-                  {
-                    rides && rides.map(ride => <UsersRides key={ride.rideId} ride={ride} />)
+                      : rides && rides.map(ride => <UsersRides key={ride.rideId} ride={ride} />)
                   }
                 </tbody>
               </table>

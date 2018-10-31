@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Navbar from '../../components/Navbar';
-import loadRequests from '../../actions/requests';
+import loadRequests, { requestResponse } from '../../actions/requests';
 import RideInfo from '../../components/RideInfo';
 import RequestsInfo from '../../components/RequestsInfo';
 
@@ -10,6 +10,8 @@ class RequestsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    this.handleResponse = this.handleResponse.bind(this);
   }
 
   componentDidMount() {
@@ -17,8 +19,20 @@ class RequestsPage extends Component {
     dispatch(loadRequests(rideId));
   }
 
+  handleResponse(e) {
+    const { dispatch } = this.props;
+    const { requestId, rideId, action } = e.target.dataset;
+    dispatch(requestResponse(rideId, requestId, action));
+  }
+
   render() {
-    const { loading, ride, requests } = this.props;
+    const {
+      loading,
+      ride,
+      requests,
+      responseLoading,
+    } = this.props;
+
     return (
       <React.Fragment>
         <header className="app-grid">
@@ -37,7 +51,11 @@ class RequestsPage extends Component {
                   : (
                     <React.Fragment>
                       <RideInfo ride={ride} />
-                      <RequestsInfo requests={requests} />
+                      <RequestsInfo
+                        responseLoading={responseLoading}
+                        handleResponse={this.handleResponse}
+                        requests={requests}
+                      />
                     </React.Fragment>
                   )
               }
@@ -55,12 +73,14 @@ RequestsPage.propTypes = {
   loading: PropTypes.bool.isRequired,
   ride: PropTypes.object.isRequired,
   requests: PropTypes.array.isRequired,
+  responseLoading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   loading: state.requests.loading,
   ride: state.requests.rideInfo.data,
   requests: state.requests.requestInfo.data,
+  responseLoading: state.requests.requestResponseLoading,
 });
 
 export default connect(mapStateToProps)(RequestsPage);

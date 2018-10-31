@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 import * as types from '../../actions/action.types';
-import requests from '../../actions/requests';
+import requests, { requestResponse } from '../../actions/requests';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -71,6 +71,59 @@ describe('requests actions', () => {
     const store = mockStore({});
 
     return store.dispatch(requests(1)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+});
+
+describe('requestResponse actions', () => {
+  afterEach(() => {
+    fetchMock.reset();
+    fetchMock.restore();
+  });
+
+  it('should call OFFER_RIDE_SUCCESS', () => {
+    fetchMock.get('http://localhost:3000/api/v1/rides/1/requests', {
+      body: {
+        status: 'success',
+        requests: [
+          {
+            id: 1,
+          },
+        ],
+      },
+    });
+
+    fetchMock.put('http://localhost:3000/api/v1/rides/1/requests/2', {
+      body: {
+        status: 'success',
+        ride: {
+          id: 1,
+        },
+      },
+    });
+
+    const expectedActions = [
+      {
+        payload: true,
+        type: types.REQUEST_RESPONSE_LOADING,
+      },
+      {
+        payload: false,
+        type: types.REQUEST_RESPONSE_LOADING,
+      },
+      {
+        payload: {
+          requestId: 2,
+          status: 'accepted',
+        },
+        type: types.REQUEST_RESPONSE_SUCCESS,
+      },
+    ];
+
+    const store = mockStore({});
+
+    return store.dispatch(requestResponse(1, 2, 'accepted')).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

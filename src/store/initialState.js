@@ -35,6 +35,7 @@ const initialState = {
       data: [],
       error: '',
     },
+    requestResponseLoading: false,
   },
 };
 

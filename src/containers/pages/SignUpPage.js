@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Navbar from '../../components/Navbar';
 import FormSubmitButton from '../../components/FormSubmitButton';
@@ -127,7 +127,7 @@ class SignUpPage extends Component {
               <span className="member-status">
                 <i>
                   Already a member?
-                  <a href="#/login" rel="js">Sign in</a>
+                  <Link to="/login" rel="js">Sign in</Link>
                 </i>
               </span>
             </form>

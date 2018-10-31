@@ -14,6 +14,7 @@ describe('ride offer reducer', () => {
         data: [],
         error: '',
       },
+      requestResponseLoading: false,
     });
   });
 
@@ -52,6 +53,22 @@ describe('ride offer reducer', () => {
     expect(requests({}, action)).toEqual({
       requestInfo: {
         data: 'Some error',
+        error: '',
+      },
+    });
+  });
+
+  it('should handle REQUEST_RESPONSE_SUCCESS', () => {
+    const action = {
+      type: types.REQUEST_RESPONSE_SUCCESS,
+      payload: {
+        requestId: '22',
+        status: 'accept',
+      },
+    };
+    expect(requests({}, action)).toEqual({
+      requestInfo: {
+        data: [],
         error: '',
       },
     });

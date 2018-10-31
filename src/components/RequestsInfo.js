@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const RequestsInfo = ({ error, requests }) => {
+const RequestsInfo = ({ error, requests, handleResponse }) => {
   if (error) {
     return (
       <div className="request-summary">
@@ -25,19 +25,21 @@ const RequestsInfo = ({ error, requests }) => {
                 <Fragment>
                   <button
                     type="button"
-                    data-req-id={request.requestId}
+                    data-request-id={request.requestId}
                     data-ride-id={request.rideId}
                     data-action="accept"
                     className="btn btn-orange"
+                    onClick={handleResponse}
                   >
                     Accept
                   </button>
                   <button
                     type="button"
-                    data-req-id={request.requestId}
+                    data-request-id={request.requestId}
                     data-ride-id={request.rideId}
                     data-action="reject"
                     className="btn btn-orange-inverse"
+                    onClick={handleResponse}
                   >
                     Reject
                   </button>
@@ -46,6 +48,7 @@ const RequestsInfo = ({ error, requests }) => {
               : (
                 <span>
                   Request
+                  {' '}
                   {request.offerStatus}
                 </span>
               )
