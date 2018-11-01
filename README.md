@@ -20,6 +20,15 @@ the ride leaves, where it is headed e.t.c
 ## Web Application
 https://app-ridemyway.herokuapp.com/
 
+
+## Technologies Used
+
+* [ReactJS](https://reactjs.org/) - Declarative Single-Page UI components
+* [Redux](https://redux.js.org/) - Application State Management
+* [React-Router](https://reacttraining.com/react-router/) - Declarative Client-Side Routing
+* [Webpack](https://webpack.js.org/) - Module bundler, task runner
+* [Jest](https://jestjs.io/) - Testing
+
 ## API
 
 API is live at https://ridemywaycore.herokuapp.com/api/v1/
