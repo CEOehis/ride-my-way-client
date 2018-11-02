@@ -95,7 +95,7 @@ const RideDetails = ({
         </div>
         <div className="driver-profile">
           <h1>Driver Profile</h1>
-          <img src={`http://i.pravatar.cc/150?u=${email}`} alt="host-img" />
+          <img src={rideCreator && `https://ui-avatars.com/api/?name=${rideCreator}&size=150&background=C0DFFF&font-size=0.33`} alt="host-img" />
           <h2 className="driver-name">
             {rideCreator}
           </h2>

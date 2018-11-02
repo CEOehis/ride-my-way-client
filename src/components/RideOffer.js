@@ -25,7 +25,7 @@ const RideOffer = ({ ride }) => {
       </div>
       <div className="ride-summary">
         <div className="profile">
-          <img src="https://placehold.it/100/100" alt="driver" />
+          <img src={rideCreator && `https://ui-avatars.com/api/?name=${rideCreator}&size=100&background=C0DFFF&font-size=0.33`} alt="driver" />
           <div className="driver">
             <h4>{rideCreator}</h4>
             <p>

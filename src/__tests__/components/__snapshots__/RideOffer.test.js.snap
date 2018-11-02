@@ -23,7 +23,7 @@ exports[`RideOffer component should render correctly 1`] = `
     >
       <img
         alt="driver"
-        src="https://placehold.it/100/100"
+        src="https://ui-avatars.com/api/?name=Celestine Ekoh-Ordan&size=100&background=C0DFFF&font-size=0.33"
       />
       <div
         className="driver"

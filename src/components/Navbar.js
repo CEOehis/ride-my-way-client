@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Navlinks from './Navlinks';
 import signOut from '../actions/signOut';
 
-export class Navbar extends React.Component {
+class Navbar extends React.Component {
   constructor() {
     super();
 
