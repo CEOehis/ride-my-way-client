@@ -13,7 +13,7 @@ const RequestsInfo = ({ error, requests, handleResponse }) => {
     requests.map(request => (
       <div key={request.requestId} className="request-summary">
         <div className="profile">
-          <img src="https://placehold.it/64/64" alt="" />
+          <img src={request.requesterName && `https://ui-avatars.com/api/?name=${request.requesterName}&background=C0DFFF&font-size=0.33`} alt="" />
           <div className="driver">
             <h4>{request.requesterName.split(' ')[0]}</h4>
           </div>

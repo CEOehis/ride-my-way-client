@@ -13,6 +13,7 @@ import RideDetailsPage from './pages/RideDetailsPage';
 import OfferRidePage from './pages/OfferRidePage';
 import MyRideOffersPage from './pages/MyRideOffersPage';
 import RequestsPage from './pages/RequestsPage';
+import ProfilePage from './pages/ProfilePage';
 
 const AppRouting = () => (
   <Router>
@@ -25,6 +26,7 @@ const AppRouting = () => (
       <ProtectedRoute path="/create" component={OfferRidePage} />
       <ProtectedRoute exact path="/user/rides" component={MyRideOffersPage} />
       <ProtectedRoute exact path="/user/rides/:rideId/requests" component={RequestsPage} />
+      <ProtectedRoute exact path="/profile" component={ProfilePage} />
       <Footer />
     </Fragment>
   </Router>
