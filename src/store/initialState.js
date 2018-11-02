@@ -37,6 +37,18 @@ const initialState = {
     },
     requestResponseLoading: false,
   },
+  profile: {
+    ridesOffered: {
+      data: [],
+      loading: false,
+      error: '',
+    },
+    ridesJoined: {
+      data: [],
+      loading: false,
+      error: '',
+    },
+  },
 };
 
 export default initialState;

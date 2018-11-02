@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Navbar from '../../components/Navbar';
+import fetchOfferedHistory from '../../actions/profile';
+import RidesOffered from '../../components/RidesOffered';
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -13,6 +15,12 @@ class ProfilePage extends Component {
     this.toggleTab = this.toggleTab.bind(this);
   }
 
+  componentDidMount() {
+    // fetch user ride history
+    const { dispatch } = this.props;
+    dispatch(fetchOfferedHistory());
+  }
+
   toggleTab(event) {
     this.setState({
       activeTab: event.target.id,
@@ -20,7 +28,7 @@ class ProfilePage extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, offeredRidesLoading, offeredRides } = this.props;
     const { activeTab } = this.state;
     return (
       <Fragment>
@@ -35,15 +43,23 @@ class ProfilePage extends Component {
             <div className="profile-details">
               <h3>Personal Information</h3>
               <div className="user-profile">
-                <div className="user-profile-summary">
-                  <img src={user.fullName && `https://ui-avatars.com/api/?name=${user.fullName}&size=100&background=C0DFFF&font-size=0.33&size=150&background=C0DFFF&font-size=0.33`} alt="" />
-                  <div className="user-profile-info">
-                    <h2 className="user-name">{user.fullName}</h2>
-                    <p>{user.phone === null ? '+234' : user.phone}</p>
-                    <p>{user.email}</p>
-                  </div>
-                </div>
-                <button type="button" className="btn btn-orange">Edit Profile</button>
+                {
+                  user.fullName
+                    ? (
+                      <Fragment>
+                        <div className="user-profile-summary">
+                          <img src={user.fullName && `https://ui-avatars.com/api/?name=${user.fullName}&size=100&background=C0DFFF&font-size=0.33&size=150&background=C0DFFF&font-size=0.33`} alt="" />
+                          <div className="user-profile-info">
+                            <h2 className="user-name">{user.fullName}</h2>
+                            <p>{user.phone === null ? '+234' : user.phone}</p>
+                            <p>{user.email}</p>
+                          </div>
+                        </div>
+                        <button type="button" className="btn btn-orange">Edit Profile</button>
+                      </Fragment>
+                    )
+                    : <i style={{ textAlign: 'center', width: '100%', display: 'block' }} className="fa fa-spinner fa-spin fa-pulse fa-5x" aria-hidden="true" />
+                }
               </div>
               <h3>My Rides</h3>
               <div className="ride-history">
@@ -63,7 +79,9 @@ class ProfilePage extends Component {
                     id="offered"
                     className={`tablink ${activeTab === 'offered' ? 'active' : ''}`}
                   >
-                    Rides Offered
+                    Rides Offered (
+                    {offeredRides && offeredRides.length}
+                    )
                     <span />
                   </button>
                 </div>
@@ -75,20 +93,7 @@ class ProfilePage extends Component {
                         <th>To</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>Ikeja</td>
-                        <td>Obalende</td>
-                      </tr>
-                      <tr>
-                        <td>Maryland</td>
-                        <td>Mushin</td>
-                      </tr>
-                      <tr>
-                        <td>Lekki</td>
-                        <td>Oshodi</td>
-                      </tr>
-                    </tbody>
+                    <tbody />
                   </table>
                 </div>
                 <div id="rides-offered" className={`tab-content ${activeTab === 'offered' ? 'show' : ''}`}>
@@ -100,30 +105,11 @@ class ProfilePage extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Ikeja</td>
-                        <td>Obalende</td>
-                      </tr>
-                      <tr>
-                        <td>Maryland</td>
-                        <td>Mushin</td>
-                      </tr>
-                      <tr>
-                        <td>Ikeja</td>
-                        <td>Obalende</td>
-                      </tr>
-                      <tr>
-                        <td>Maryland</td>
-                        <td>Mushin</td>
-                      </tr>
-                      <tr>
-                        <td>Ikeja</td>
-                        <td>Obalende</td>
-                      </tr>
-                      <tr>
-                        <td>Maryland</td>
-                        <td>Mushin</td>
-                      </tr>
+                      {
+                        offeredRidesLoading
+                          ? null
+                          : <RidesOffered rides={offeredRides} />
+                      }
                     </tbody>
                   </table>
                 </div>
@@ -138,10 +124,14 @@ class ProfilePage extends Component {
 
 ProfilePage.propTypes = {
   user: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  offeredRidesLoading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   user: state.auth.user,
+  offeredRidesLoading: state.profile.ridesOffered.loading,
+  offeredRides: state.profile.ridesOffered.data,
 });
 
 export default connect(mapStateToProps)(ProfilePage);
